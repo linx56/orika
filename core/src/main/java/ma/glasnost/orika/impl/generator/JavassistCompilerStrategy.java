@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
+import java.net.URL;
 import java.util.Map;
 import java.util.Random;
 import java.util.WeakHashMap;
@@ -174,7 +175,11 @@ public class JavassistCompilerStrategy extends CompilerStrategy {
             try {
                 classPool.get(className);
             } catch (NotFoundException e) {
-                throw new SourceCodeGenerationException(type + " is not accessible", e);
+                className = className.replace('.', '/') + ".class";
+                URL resource = Thread.currentThread().getContextClassLoader().getResource(className);
+                if (resource == null) {
+                    throw new SourceCodeGenerationException(type + " is not accessible");
+                }
             }
         }  
     }

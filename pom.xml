@@ -8,11 +8,11 @@
     <description>Orika parent project</description>
     <url>http://code.google.com/p/orika</url>
 
-    <parent>
+<!--    <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
-    </parent>
+    </parent>-->
 
     <organization>
         <name>Glasnost</name>
@@ -23,7 +23,6 @@
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
         </license>
     </licenses>
 
@@ -382,5 +381,12 @@
             </build>
         </profile>
     </profiles>
-
+    <distributionManagement>
+<snapshotRepository>
+ <id>internal.repo</id>
+      <name>Internal Repository</name>
+          <url>file:///tmp/</url>
+        <uniqueVersion>false</uniqueVersion>
+</snapshotRepository>
+    </distributionManagement>
 </project>
